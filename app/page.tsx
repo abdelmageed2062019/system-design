@@ -17,7 +17,7 @@ export default function Home() {
           </p>
         </section>
 
-        <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-6">
           {[
             {
               href: "/products",
@@ -38,6 +38,16 @@ export default function Home() {
               href: "/fleet",
               title: "Fleet",
               description: "Fleet management overview with utilization and vehicle state cards.",
+            },
+            {
+              href: "/video-player",
+              title: "Video Player",
+              description: "Protected streaming page with watermarking and heartbeat analytics.",
+            },
+            {
+              href: "/quiz",
+              title: "Quiz",
+              description: "Timed assessment workspace with offline-safe progress and answer sync.",
             },
           ].map((item) => (
             <Link

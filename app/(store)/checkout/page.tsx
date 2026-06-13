@@ -29,7 +29,7 @@ export default function CheckoutPage() {
     },
   });
 
-  // محرك التحقق المعزول لكل خطوة قبل الانتقال (Step Validation Isolation)
+  // Validate the active step before moving forward.
   const handleNextStep = async () => {
     const fieldToValidate = step === 1 ? 'shipping' : 'payment';
     const isStepValid = await methods.trigger(fieldToValidate);
@@ -41,25 +41,31 @@ export default function CheckoutPage() {
 
   const handlePrevStep = () => setStep((prev) => Math.max(prev - 1, 1));
 
-  // معالجة الدفع النهائي وحفظ البيانات تفاؤلياً
-  const onFinalSubmit = async (data: CheckoutFormData) => {
+  // Simulate the final payment request while keeping form state intact.
+  const onFinalSubmit = async () => {
     setPaymentError(null);
 
     try {
-      // محاكاة طلب شبكة للـ API الخاص بـ البوابة المالية
+      // Simulate a payment gateway network request.
       await new Promise((resolve, reject) => {
         setTimeout(() => {
-          // محاكاة عشوائية للفشل لرؤية معالجة الحفاظ على العربة (Cart Retention)
-          Math.random() > 0.4 ? resolve(true) : reject(new Error('الرصيد غير كافٍ بالبطاقة، يرجى استخدام وسيلة أخرى.'));
+          // Randomize success and failure to test cart retention behavior.
+          if (Math.random() > 0.4) {
+            resolve(true);
+          } else {
+            reject(new Error('Insufficient card balance. Please choose another payment method.'));
+          }
         }, 1500);
       });
 
-      // في حالة النجاح فقط: فرغ العربة واعرض واجهة النجاح
+      // Only clear the cart after a successful payment.
       clearCart();
       setOrderSuccess(true);
-    } catch (error: any) {
-      // هدف 4: لو فشل الدفع، الـ Zustand Store لم يفرغ وبيانات الاستمارة باقية كما هي دون أي Loss!
-      setPaymentError(error.message || 'فشلت المعاملة المادية.');
+    } catch (error: unknown) {
+      // Keep the cart and form data untouched when payment fails.
+      setPaymentError(
+        error instanceof Error ? error.message : 'The payment transaction failed.',
+      );
     }
   };
 
@@ -70,10 +76,10 @@ export default function CheckoutPage() {
           <div className="w-16 h-16 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mx-auto">
             <ShieldCheck size={36} />
           </div>
-          <h2 className="text-xl font-bold text-slate-900">تم تأكيد طلبك بنجاح!</h2>
-          <p className="text-sm text-slate-500">تمت معالجة الدفع بأمان وجاري تحضير شحنتك لتسليمها لأسطول الشحن اللوجستي.</p>
+          <h2 className="text-xl font-bold text-slate-900">Your order has been confirmed.</h2>
+          <p className="text-sm text-slate-500">Payment was processed securely and your shipment is now being prepared for fulfillment.</p>
           <a href="/products" className="block w-full py-3 bg-blue-600 text-white rounded-xl font-semibold text-sm hover:bg-blue-700 transition-colors">
-            العودة للمتجر
+            Return to Store
           </a>
         </div>
       </div>
@@ -84,13 +90,13 @@ export default function CheckoutPage() {
     <div className="min-h-screen bg-slate-50/50 p-6">
       <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
 
-        {/* الـ Form الرئيسي (2/3 من المساحة) */}
+        {/* Main form area */}
         <div className="md:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-100 h-fit">
-          {/* شريط تقدم الخطوات السفلي */}
+          {/* Step progress */}
           <div className="flex justify-between items-center mb-6 border-b pb-4">
-            <span className={`text-sm font-bold ${step >= 1 ? 'text-blue-600' : 'text-slate-400'}`}>1. الشحن والتوصيل</span>
+            <span className={`text-sm font-bold ${step >= 1 ? 'text-blue-600' : 'text-slate-400'}`}>1. Shipping</span>
             <div className="h-0.5 w-16 bg-slate-100 flex-1 mx-4" />
-            <span className={`text-sm font-bold ${step === 2 ? 'text-blue-600' : 'text-slate-400'}`}>2. طريقة الدفع</span>
+            <span className={`text-sm font-bold ${step === 2 ? 'text-blue-600' : 'text-slate-400'}`}>2. Payment</span>
           </div>
 
           {paymentError && (
@@ -106,13 +112,13 @@ export default function CheckoutPage() {
               <div className="flex justify-between pt-4 border-t border-slate-50">
                 {step > 1 && (
                   <button type="button" onClick={handlePrevStep} className="px-5 py-2.5 border border-slate-200 text-slate-600 rounded-xl text-xs font-bold hover:bg-slate-50">
-                    رجوع
+                    Back
                   </button>
                 )}
 
                 {step < 2 ? (
                   <button type="button" onClick={handleNextStep} className="mr-auto px-6 py-2.5 bg-blue-600 text-white rounded-xl text-xs font-bold hover:bg-blue-700">
-                    التالي
+                    Next
                   </button>
                 ) : (
                   <button
@@ -120,7 +126,7 @@ export default function CheckoutPage() {
                     disabled={methods.formState.isSubmitting || cartItems.length === 0}
                     className="mr-auto px-6 py-2.5 bg-green-600 text-white rounded-xl text-xs font-bold hover:bg-green-700 disabled:opacity-50"
                   >
-                    {methods.formState.isSubmitting ? 'جاري الدفع الآمن...' : `تأكيد ودفع $${totalCost}`}
+                    {methods.formState.isSubmitting ? 'Processing secure payment...' : `Confirm and Pay $${totalCost}`}
                   </button>
                 )}
               </div>
@@ -128,9 +134,9 @@ export default function CheckoutPage() {
           </FormProvider>
         </div>
 
-        {/* ملخص الفاتورة (1/3 من المساحة) */}
+        {/* Invoice summary */}
         <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 h-fit space-y-4">
-          <h3 className="font-bold text-slate-900 border-b pb-2 text-sm">ملخص الفاتورة</h3>
+          <h3 className="font-bold text-slate-900 border-b pb-2 text-sm">Invoice Summary</h3>
           <div className="max-h-48 overflow-y-auto space-y-2 pr-1">
             {cartItems.map(item => (
               <div key={item.productId} className="flex justify-between text-xs text-slate-600 font-medium">
@@ -140,7 +146,7 @@ export default function CheckoutPage() {
             ))}
           </div>
           <div className="border-t pt-3 flex justify-between items-center text-sm font-bold text-slate-900">
-            <span>الإجمالي الكلي:</span>
+            <span>Grand Total:</span>
             <span className="font-mono text-base text-blue-600">${totalCost}</span>
           </div>
         </div>

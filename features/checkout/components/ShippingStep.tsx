@@ -11,14 +11,14 @@ export function ShippingStep() {
 
      return (
           <div className="space-y-4 animate-fade-in">
-               <h3 className="text-base font-bold text-slate-800 border-b pb-2">1. بيانات الشحن والتوصيل</h3>
+               <h3 className="text-base font-bold text-slate-800 border-b pb-2">1. Shipping Details</h3>
 
                <div>
-                    <label className="block text-xs font-semibold text-slate-600 mb-1">الاسم الكامل</label>
+                    <label className="block text-xs font-semibold text-slate-600 mb-1">Full Name</label>
                     <input
                          {...register('shipping.fullName')}
                          className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-blue-500 transition-colors"
-                         placeholder="جون دو"
+                         placeholder="John Doe"
                     />
                     {errors.shipping?.fullName && (
                          <p className="text-rose-500 text-xs mt-1 font-medium">{String(errors.shipping.fullName.message)}</p>
@@ -27,7 +27,7 @@ export function ShippingStep() {
 
                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                         <label className="block text-xs font-semibold text-slate-600 mb-1">رقم الهاتف</label>
+                         <label className="block text-xs font-semibold text-slate-600 mb-1">Phone Number</label>
                          <input
                               {...register('shipping.phone')}
                               className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-blue-500 transition-colors text-left"
@@ -38,11 +38,11 @@ export function ShippingStep() {
                          )}
                     </div>
                     <div>
-                         <label className="block text-xs font-semibold text-slate-600 mb-1">المدينة</label>
+                         <label className="block text-xs font-semibold text-slate-600 mb-1">City</label>
                          <input
                               {...register('shipping.city')}
                               className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-blue-500 transition-colors"
-                              placeholder="القاهرة"
+                              placeholder="Cairo"
                          />
                          {errors.shipping?.city && (
                               <p className="text-rose-500 text-xs mt-1 font-medium">{String(errors.shipping.city.message)}</p>
@@ -51,12 +51,12 @@ export function ShippingStep() {
                </div>
 
                <div>
-                    <label className="block text-xs font-semibold text-slate-600 mb-1">العنوان بالتفصيل</label>
+                    <label className="block text-xs font-semibold text-slate-600 mb-1">Full Address</label>
                     <textarea
                          {...register('shipping.address')}
                          rows={3}
                          className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-blue-500 transition-colors"
-                         placeholder="رقم الشقة، الدور، اسم الشارع، المعلم المميز..."
+                         placeholder="Apartment number, floor, street name, and a nearby landmark..."
                     />
                     {errors.shipping?.address && (
                          <p className="text-rose-500 text-xs mt-1 font-medium">{String(errors.shipping.address.message)}</p>
