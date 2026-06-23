@@ -1,0 +1,94 @@
+{
+  "posts": [
+    {
+      "id": "p-1",
+      "username": "user_42",
+      "avatarUrl": "https://api.dicebear.com/7.x/avataaars/svg?seed=1",
+      "mediaUrl": "https://picsum.photos/600/600?random=1",
+      "caption": "Nature's beauty captured in a single frame.",
+      "likesCount": 2431,
+      "hasLiked": false
+    },
+    {
+      "id": "p-2",
+      "username": "user_17",
+      "avatarUrl": "https://api.dicebear.com/7.x/avataaars/svg?seed=2",
+      "mediaUrl": "https://picsum.photos/600/600?random=2",
+      "caption": "Exploring the world, one photo at a time.",
+      "likesCount": 872,
+      "hasLiked": true
+    },
+    {
+      "id": "p-3",
+      "username": "user_83",
+      "avatarUrl": "https://api.dicebear.com/7.x/avataaars/svg?seed=3",
+      "mediaUrl": "https://picsum.photos/600/600?random=3",
+      "caption": "A moment frozen in time, forever cherished.",
+      "likesCount": 4512,
+      "hasLiked": false
+    },
+    {
+      "id": "p-4",
+      "username": "user_55",
+      "avatarUrl": "https://api.dicebear.com/7.x/avataaars/svg?seed=4",
+      "mediaUrl": "https://picsum.photos/600/600?random=4",
+      "caption": "Nature's beauty captured in a single frame.",
+      "likesCount": 123,
+      "hasLiked": false
+    },
+    {
+      "id": "p-5",
+      "username": "user_29",
+      "avatarUrl": "https://api.dicebear.com/7.x/avataaars/svg?seed=5",
+      "mediaUrl": "https://picsum.photos/600/600?random=5",
+      "caption": "Exploring the world, one photo at a time.",
+      "likesCount": 3098,
+      "hasLiked": true
+    },
+    {
+      "id": "p-6",
+      "username": "user_71",
+      "avatarUrl": "https://api.dicebear.com/7.x/avataaars/svg?seed=6",
+      "mediaUrl": "https://picsum.photos/600/600?random=6",
+      "caption": "A moment frozen in time, forever cherished.",
+      "likesCount": 564,
+      "hasLiked": false
+    },
+    {
+      "id": "p-7",
+      "username": "user_14",
+      "avatarUrl": "https://api.dicebear.com/7.x/avataaars/svg?seed=7",
+      "mediaUrl": "https://picsum.photos/600/600?random=7",
+      "caption": "Nature's beauty captured in a single frame.",
+      "likesCount": 1892,
+      "hasLiked": false
+    },
+    {
+      "id": "p-8",
+      "username": "user_60",
+      "avatarUrl": "https://api.dicebear.com/7.x/avataaars/svg?seed=8",
+      "mediaUrl": "https://picsum.photos/600/600?random=8",
+      "caption": "Exploring the world, one photo at a time.",
+      "likesCount": 6743,
+      "hasLiked": false
+    },
+    {
+      "id": "p-9",
+      "username": "user_38",
+      "avatarUrl": "https://api.dicebear.com/7.x/avataaars/svg?seed=9",
+      "mediaUrl": "https://picsum.photos/600/600?random=9",
+      "caption": "A moment frozen in time, forever cherished.",
+      "likesCount": 2156,
+      "hasLiked": true
+    },
+    {
+      "id": "p-10",
+      "username": "user_46",
+      "avatarUrl": "https://api.dicebear.com/7.x/avataaars/svg?seed=10",
+      "mediaUrl": "https://picsum.photos/600/600?random=10",
+      "caption": "Nature's beauty captured in a single frame.",
+      "likesCount": 3210,
+      "hasLiked": false
+    }
+  ]
+}

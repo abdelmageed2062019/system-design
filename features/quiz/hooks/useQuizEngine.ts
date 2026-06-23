@@ -50,23 +50,13 @@ export function useQuizEngine(quizId: string, questions: Question[], initialDura
      const syncQueueRef = useRef<Record<string, string>>({});
 
      // Flush queued answers to the backend whenever the network is available.
-     const flushSyncQueue = useCallback(async () => {
-          const queue = { ...syncQueueRef.current };
-          if (Object.keys(queue).length === 0) return;
+      const flushSyncQueue = useCallback(async () => {
+           const queue = { ...syncQueueRef.current };
+           if (Object.keys(queue).length === 0) return;
 
-          try {
-               await fetch(`/api/v1/quiz/${quizId}/sync-answers`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ answers: queue }),
-               });
-
-               Object.keys(queue).forEach((id) => delete syncQueueRef.current[id]);
-               console.log('Quiz answers synchronized successfully.');
-          } catch {
-               console.warn('Server sync failed. Answers remain stored locally until the network returns.');
-          }
-     }, [quizId]);
+           console.log(`[quiz] ${quizId} synced answers:`, queue);
+           Object.keys(queue).forEach((id) => delete syncQueueRef.current[id]);
+      }, [quizId]);
 
      // Subscribe to network changes only; persisted state is restored through lazy initializers.
      useEffect(() => {

@@ -45,6 +45,11 @@ export default function Home() {
               description: "Protected streaming page with watermarking and heartbeat analytics.",
             },
             {
+              href: "/feed",
+              title: "Feed",
+              description: "Infinite-scroll social feed with virtualized posts and optimistic likes.",
+            },
+            {
               href: "/quiz",
               title: "Quiz",
               description: "Timed assessment workspace with offline-safe progress and answer sync.",
