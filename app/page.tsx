@@ -54,6 +54,11 @@ export default function Home() {
               title: "Quiz",
               description: "Timed assessment workspace with offline-safe progress and answer sync.",
             },
+            {
+              href: "/autocomplete",
+              title: "Autocomplete",
+              description: "Google-style and Facebook-style search built on a shared generic hook.",
+            },
           ].map((item) => (
             <Link
               key={item.href}
