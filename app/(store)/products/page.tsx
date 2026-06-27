@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
+import Link from 'next/link';
 import { VirtuosoGrid } from 'react-virtuoso';
 import { Product } from '@/core/types';
 import { ProductCard } from '@/features/products/components/ProductCard';
@@ -26,6 +27,12 @@ export default function ProductsPage() {
           <h1 className="text-xl font-bold text-slate-900">Digital Product Warehouse</h1>
           <p className="text-xs text-slate-500 mt-0.5">High-performance rendering for 100,000 products</p>
         </div>
+        <Link
+          href="/products/docs"
+          className="text-xs font-medium text-blue-600 hover:text-blue-800 underline underline-offset-2"
+        >
+          Docs
+        </Link>
       </header>
 
       <main className="max-w-7xl mx-auto">

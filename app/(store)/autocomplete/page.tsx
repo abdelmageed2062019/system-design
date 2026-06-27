@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback } from "react";
+import Link from "next/link";
 import { Search, Globe, Bell } from "lucide-react";
 import { Autocomplete } from "@/features/autocomplete/components/Autocomplete";
 import { SearchDropdown } from "@/features/autocomplete/components/SearchDropdown";
@@ -30,6 +31,14 @@ export default function AutocompletePage() {
           <p className="mt-4 max-w-2xl text-base leading-7 text-zinc-300">
             Google-style and Facebook-style autocomplete inputs built on the same generic hook. Type at least 2 characters to see suggestions.
           </p>
+          <div className="mt-6">
+            <Link
+              href="/autocomplete/docs"
+              className="text-xs font-medium text-blue-400 hover:text-blue-300 underline underline-offset-2"
+            >
+              Docs
+            </Link>
+          </div>
         </header>
 
         <div className="grid gap-8 lg:grid-cols-2">
@@ -46,7 +55,7 @@ export default function AutocompletePage() {
             <Autocomplete
               fetchSuggestions={fetchGoogleSuggestions}
               renderItem={(item: string) => (
-                <span className="text-sm text-slate-700">{item}</span>
+                <span className="text-sm text-slate-900">{item}</span>
               )}
               onSelect={handleGoogleSelect}
               placeholder="Search Google..."

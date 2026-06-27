@@ -17,7 +17,7 @@ export default function Home() {
           </p>
         </section>
 
-        <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-6">
+        <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {[
             {
               href: "/products",
@@ -58,6 +58,11 @@ export default function Home() {
               href: "/autocomplete",
               title: "Autocomplete",
               description: "Google-style and Facebook-style search built on a shared generic hook.",
+            },
+            {
+              href: "/data-table",
+              title: "Data Table",
+              description: "Reusable table component with custom cells, formatting, and dark mode.",
             },
           ].map((item) => (
             <Link

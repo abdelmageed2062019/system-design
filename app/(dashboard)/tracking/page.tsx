@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useMemo } from 'react';
+import Link from 'next/link';
 import { useFleetStore } from '@/features/fleet-tracking/store/useFleetStore';
 import { useFleetDataStream } from '@/features/fleet-tracking/hooks/useFleetDataStream';
 import { Map, Navigation, Compass } from 'lucide-react';
@@ -92,6 +93,12 @@ export default function TrackingPage() {
             re-render bottlenecks
           </p>
         </div>
+        <Link
+          href="/tracking/docs"
+          className="text-xs font-medium text-blue-600 hover:text-blue-800 underline underline-offset-2"
+        >
+          Docs
+        </Link>
       </header>
 
       {/* Responsive main workspace */}
