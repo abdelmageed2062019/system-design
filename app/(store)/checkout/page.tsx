@@ -1,6 +1,7 @@
 // app/(store)/checkout/page.tsx
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -71,7 +72,19 @@ export default function CheckoutPage() {
 
   if (orderSuccess) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
+      <div className="min-h-screen bg-slate-50 flex flex-col">
+        <header className="shrink-0 border-b border-slate-200 bg-white px-6 py-4">
+          <div className="mx-auto flex max-w-4xl items-center justify-between">
+            <h1 className="text-lg font-bold text-slate-900">Checkout</h1>
+            <Link
+              href="/checkout/docs"
+              className="text-xs font-medium text-blue-600 hover:text-blue-800 underline underline-offset-2"
+            >
+              Docs
+            </Link>
+          </div>
+        </header>
+        <div className="flex flex-1 items-center justify-center p-6">
         <div className="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full text-center space-y-4 border border-slate-100">
           <div className="w-16 h-16 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mx-auto">
             <ShieldCheck size={36} />
@@ -82,12 +95,25 @@ export default function CheckoutPage() {
             Return to Store
           </a>
         </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50/50 p-6">
+    <div className="min-h-screen bg-slate-50/50 flex flex-col">
+      <header className="shrink-0 border-b border-slate-200 bg-white px-6 py-4">
+        <div className="mx-auto flex max-w-4xl items-center justify-between">
+          <h1 className="text-lg font-bold text-slate-900">Checkout</h1>
+          <Link
+            href="/checkout/docs"
+            className="text-xs font-medium text-blue-600 hover:text-blue-800 underline underline-offset-2"
+          >
+            Docs
+          </Link>
+        </div>
+      </header>
+      <div className="flex-1 p-6">
       <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
 
         {/* Main form area */}
@@ -151,6 +177,7 @@ export default function CheckoutPage() {
           </div>
         </div>
 
+      </div>
       </div>
     </div>
   );

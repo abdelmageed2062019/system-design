@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useQuizEngine } from '../hooks/useQuizEngine';
 import { Wifi, WifiOff, Clock, ArrowRight, ArrowLeft, ShieldAlert } from 'lucide-react';
 
@@ -28,7 +29,19 @@ export function QuizWorkspace() {
      };
 
      return (
-          <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
+          <div className="min-h-screen bg-slate-50 flex flex-col">
+               <header className="shrink-0 border-b border-slate-200 bg-white px-6 py-4">
+                    <div className="mx-auto flex max-w-2xl items-center justify-between">
+                         <h1 className="text-lg font-bold text-slate-900">Quiz</h1>
+                         <Link
+                              href="/quiz/docs"
+                              className="text-xs font-medium text-blue-600 hover:text-blue-800 underline underline-offset-2"
+                         >
+                              Docs
+                         </Link>
+                    </div>
+               </header>
+               <div className="flex flex-1 items-center justify-center p-6">
                <div className="bg-white rounded-3xl shadow-xl border border-slate-100 max-w-2xl w-full p-6 space-y-6 relative overflow-hidden">
 
                     {/* Top status bar and network state */}
@@ -99,6 +112,7 @@ export function QuizWorkspace() {
                               Next <ArrowRight size={14} />
                          </button>
                     </div>
+               </div>
                </div>
           </div>
      );

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo } from 'react';
+import Link from 'next/link';
 import { useFleetStore } from '@/features/fleet-tracking/store/useFleetStore';
 import { useFleetDataStream } from '@/features/fleet-tracking/hooks/useFleetDataStream';
 import { VehicleOptimizedCard } from '@/features/fleet-tracking/components/VehicleOptimizedCard';
@@ -44,6 +45,12 @@ export default function FleetPage() {
           </h1>
           <p className="text-xs text-slate-500 mt-0.5">Batched updates every 500ms to keep rendering and memory usage stable</p>
         </div>
+        <Link
+          href="/fleet/docs"
+          className="text-xs font-medium text-blue-600 hover:text-blue-800 underline underline-offset-2"
+        >
+          Docs
+        </Link>
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

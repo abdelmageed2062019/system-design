@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 import { SecurePlayer } from '@/features/video-player/components/SecurePlayer';
 
@@ -12,16 +13,26 @@ export default function VideoPlayerPage() {
     <main className="min-h-screen bg-slate-50 px-6 py-10">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-8">
         <section className="rounded-[2rem] bg-zinc-950 px-8 py-10 text-white">
-          <p className="text-sm font-medium uppercase tracking-[0.24em] text-zinc-400">
-            Protected streaming
-          </p>
-          <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight">
-            Secure video playback with watermarking and heartbeat analytics.
-          </h1>
-          <p className="mt-4 max-w-3xl text-base leading-7 text-zinc-300">
-            This feature module demonstrates a protected lesson player with a moving
-            watermark overlay and progress reporting ready for analytics integration.
-          </p>
+          <div className="flex items-start justify-between">
+            <div>
+              <p className="text-sm font-medium uppercase tracking-[0.24em] text-zinc-400">
+                Protected streaming
+              </p>
+              <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight">
+                Secure video playback with watermarking and heartbeat analytics.
+              </h1>
+              <p className="mt-4 max-w-3xl text-base leading-7 text-zinc-300">
+                This feature module demonstrates a protected lesson player with a moving
+                watermark overlay and progress reporting ready for analytics integration.
+              </p>
+            </div>
+            <Link
+              href="/video-player/docs"
+              className="shrink-0 text-xs font-medium text-blue-400 hover:text-blue-300 underline underline-offset-2"
+            >
+              Docs
+            </Link>
+          </div>
         </section>
 
         <section className="grid gap-6 xl:grid-cols-[1.5fr_0.85fr]">
